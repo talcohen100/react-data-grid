@@ -11,7 +11,8 @@ const SortableHeaderCell = React.createClass({
     columnKey: React.PropTypes.string.isRequired,
     column: React.PropTypes.shape({ name: React.PropTypes.node }),
     onSort: React.PropTypes.func.isRequired,
-    sortDirection: React.PropTypes.oneOf(Object.keys(DEFINE_SORT))
+    sortDirection: React.PropTypes.oneOf(Object.keys(DEFINE_SORT)),
+    headerRenderer: React.PropTypes.node
   },
 
   onClick: function() {
@@ -50,12 +51,15 @@ const SortableHeaderCell = React.createClass({
       'react-grid-HeaderCell-sortable--descending': this.props.sortDirection === 'DESC'
     });
 
+    let content = this.props.headerRenderer ? this.props.headerRenderer :  this.props.column.name;
+
     return (
       <div className={className}
         onClick={this.onClick}
         style={{cursor: 'pointer'}}>
         <span className="pull-right">{this.getSortByText()}</span>
-        {this.props.column.name}
+        {/*{this.props.column.name}*/}
+        { content }
       </div>
     );
   }
