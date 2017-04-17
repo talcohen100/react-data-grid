@@ -52,15 +52,14 @@ const SortableHeaderCell = React.createClass({
     });
 
     let content = this.props.headerRenderer ? this.props.headerRenderer :  this.props.column.name;
-
     return (
       <div className={className}
         onClick={this.onClick}
         style={{cursor: 'pointer'}}>
         <span className="pull-right">{this.getSortByText()}</span>
-        {/*{this.props.column.name}*/}
+        {/* {this.props.column.name} */}
         { content }
-      </div>
+        </div>
     );
   }
 });
